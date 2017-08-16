@@ -1,0 +1,189 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Form</title>
+<link href="css/global.css" rel="stylesheet" type="text/css" />
+<link href="css/template.css" rel="stylesheet" type="text/css" />
+<link href="css/sidebar.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+
+<script>
+  //function for sidebar
+    $(document).ready(function(){
+        function sidebar(){
+          var trigger = $('#trigger, #close'),
+          menu = $('.sidebar');
+
+          trigger.on('click',function(){
+            $(this).toggleClass('active');
+            menu.toggleClass('closed');
+           // $('.main').toggleClass('shunk');
+            $('#blurrMe').toggleClass('blurred'); 
+          });
+        }
+
+        function deploy(){
+        sidebar();
+        }
+        deploy();
+
+    });
+    // functions for form validation
+    function check_country(){
+      if($("#country").val()=="Canada"||$("#country").val()=="canada"){
+        document.getElementById('valid_postal').setAttribute('value',false);
+        $('.postal_code').toggleClass('show',true);
+      }
+      else
+      $('.postal_code').toggleClass('show',false);
+    }
+    function check_null(){
+      if($("#name").val()=="")
+       document.getElementById('name_valid').style.display='inline';
+      else
+      document.getElementById('name_valid').style.display='none';
+      if($("#email").val()=="")
+       document.getElementById('email_valid').style.display='inline';
+      else
+      document.getElementById('email_valid').style.display='none';
+
+    }
+    function check_postal(){
+      var valid_postal = new RegExp(/^\s*[a-ceghj-npr-tvxy]\d[a-ceghj-npr-tv-z](\s)?\d[a-ceghj-npr-tv-z]\d\s*$/i);
+      if(valid_postal.test($("#postal_code").val())){
+        document.getElementById('postal_id').style.display='none';
+        document.getElementById('valid_postal').setAttribute('value',true);
+      }else{
+        document.getElementById('postal_id').style.display='inline';
+      }
+    }
+    function check_all(){
+      if(!$("#name").val()==""&&!$("#email").val()==""&&$("#valid_postal").val())
+        
+      document.getElementById('btn_submit').disabled=false;
+    
+      
+    }
+    
+</script>
+</head>
+
+<body>
+<!--header-->
+<header>
+<div class="header_top">
+   <div class="header_top_left">
+      <a href="#">
+          <img src="images/anti-alias-logo.png" class="logo" alt="Race Roster logo" />
+          </a>  
+       
+    
+    </div>
+   <div class="header_top_right">
+   <ul>
+      <li><a href="#" id="trigger">Menu</a></li>
+      <li><a href="#" target="_self">Contact </a></li>
+      <li><a href="#" target="_self">Pricing </a></li>
+      <li ><a href="#" target="_self">Marketing </a></li>
+      <li><a href="#" target="_self">Fundraising</a></li>
+      <li><a href="#" target="_self">Registration</a></li>
+      
+      
+      
+   </ul>
+   </div>
+</div>
+<!--Side Bar Nav-->
+
+<div class="sidebar closed">
+  <header>
+    <h2>Sidebar</h2>
+    <a href="#" id="close"><span class="entypo-cancel"></span></a> </header>
+  <ul>
+    <li><a href="#">A link</a></li>
+    <li><a href="#">A link</a></li>
+    <li><a href="#">A link</a></li>
+    <li><a href="#">A link</a></li>
+    <li><a href="#">A link</a></li>
+    <li><a href="#">A link</a></li>
+    <li><a href="#">A link</a></li>
+  </ul>
+ 
+</div>
+</header>
+<!--main form-->
+<div class="main">
+  <div class="form_container">
+    <div class="container">
+    <form class="collecting_form">
+      <div class="row">
+        <div class="col-md-12">
+        <h3 class="text-center">Please Fill The Form</h2>
+        </div>
+      </div>
+      <div class="row">
+        <input type="hidden" name="valid_postal" id="valid_postal" value="true">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Name</label><label class="name_input_status" id="name_valid"> * Please Enter Your Name</label>
+              <input id="name" maxlength="50" name="name" type="text" class="form-control" onkeyup="check_null()">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Email</label><label class="email_input_status" id="email_valid"> * Please Enter Your Email</label>
+              <input id="email" maxlength="50" name="email" type="text" class="form-control" onkeyup="check_null()">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <a>Address</a><input id="address" maxlength="50" name="address" type="text" class="form-control" onkeyup="check_null()">
+              <a>City</a><input id="city" maxlength="20" name="city" type="text" class="form-control" onkeyup="check_null()">
+              <a>Province</a><input id="province" maxlength="20" name="province" type="text" class="form-control" onkeyup="check_null()">
+              <a>Country</a><input id="country" maxlength="20" name="country" type="text" class="form-control" onkeyup="check_country(),check_null()">
+          </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <div class="postal_code" >
+              <label>Postal Code</label><lable class="postal_status" id="postal_id"> * Invalid Postal Code</lable>
+              <input id="postal_code" maxlength="50" name="postal_code" type="text" class="form-control" onkeyup="check_null(),check_postal()">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Telephone Number</label>
+              <input id="tele_number" maxlength="50" name="tele_number" type="text" class="form-control" onkeyup="check_null()">
+            </div>
+          </div>
+          <div class="col-md-4 " ></div>
+          <div class="col-md-2 " >
+            <div class="form-group">
+              <button class="btn_submit" type="button" name="btn_check"  onclick="check_all()">
+                                    check
+                                </button>
+              <button class="btn_submit" type="submit" name="btn_submit" id="btn_submit" disabled="disabled" >
+                                    Submit
+                                </button>
+            </div>
+          </div>
+          
+          
+      </div>
+    </form>
+  </div>
+  </div>
+</div>
+<!--footer-->
+<footer>
+<div class="footer" id="footer">
+    <div class="footer_top"><a href="#" target="_parent" class="footer_dull_red">Get to Know Us</a> | <a href="#" target="_parent" class="footer_dull_red">Make Money with Us</a> | <a href="#" target="_parent" class="footer_dull_red">Join Us</a> | <a href="#" target="_parent" class="footer_dull_red">Let Us Help You</a> | <a href="#" target="_parent" class="footer_dull_red">Conditions of Use</a></div>
+    <iframe src="footer.html" height="50px" width="900px" frameborder="0"></iframe>
+</div> 
+</footer>       
+</body>
+    
+</html>

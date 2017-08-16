@@ -1,0 +1,115 @@
+@charset "gb2312";
+/* CSS Document */
+
+/*HEADER STYLE*/
+.header_top,.header_middle,.header_search{
+	margin-left:auto;
+	margin-right:auto;
+	width:100%;
+	clear:both;
+	}
+.header_top{
+	border:solid 1px #999;
+	background:#1abc9c;
+	color:#FFFFFF;
+	height:30px;
+	width: 100%;
+	}
+
+	.header_top_left{
+		float:left;
+		width:260px;
+		padding-left:10px;
+		line-height:28px;
+		}
+	*html .header_top_left{ /*only IE6*/
+		line-height:24px;
+		}
+	.header_top_right{
+
+		float:right;
+		padding-right:10px;
+		width:400px;
+		text-align:right;
+		}
+	.header_top_right li{
+		float:right;
+		margin-left:5px;
+		margin-top:0px;
+		}
+	.header_top_right a{
+		color:#FFF;
+		font-size: 14px;
+		}
+	.logo,.menu_left,.menu_right{
+	       float:left;
+		}
+	.logo{
+		width:130px;
+		padding-top:0px;
+		height:30px;
+		}
+	.main{
+		float: right;
+		height: 600px;
+		width: 100%;
+		overflow:scroll;
+		
+	}
+	.main.shunk{
+		position : fixed;
+		right:260;
+		height: 600px;
+		width: 100%;
+		overflow:scroll;
+		
+	}
+	.postal_status{
+			color: #9B2B0F
+	}
+	.postal_code{
+		display: none;
+	}
+	.postal_code.show{
+		display: inline;
+	}
+	.name_input_status,.email_input_status{
+		color: #9B2B0F;
+	}
+	
+	.btn_submit{
+		
+		background-color: #1abc9c;
+		
+	}
+	.form{
+		text-align:center;
+	}
+	
+	
+	.bold,.bold:hover{
+		font-weight:bold;
+		}
+	
+
+
+/*FOOTER STYLE*/
+.footer{
+	position: relative;
+	bottom: 0;
+}
+.footer_top,.footer_end{
+	width:800px;
+	margin:0px auto 0px auto;
+	clear:both;
+	text-align:center;
+	}
+.footer_top{
+	color:#000;
+	}
+.footer_dull_red,.footer_dull_red:hover{
+	color:#000;
+	margin:0px 8px 0px 8px;
+	}
+
+
